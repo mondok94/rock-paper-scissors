@@ -40,8 +40,8 @@ function playRound(playerSelection, computerSelection) {
 // Function that simulates a 5 round game
 function game() {
     // Score variables
-    let playerScore;
-    let computerScore;
+    let playerScore = 0;
+    let computerScore = 0;
     // 5 rounds of play
     for (let i = 0; i < 5; i++) {
         // for each round, player inputs selection
@@ -57,17 +57,17 @@ function game() {
         if (roundWinner == 1) {
             console.log("Draw! " + "round " + (i + 1) + " of 5.");
         } else if (roundWinner == 2) {
-            computerScore++;
+            ++computerScore;
             console.log("Computer Wins! " + "round " + (i + 1) + " of 5.");
         } else if (roundWinner == 3) {
-            playerScore++;
+            ++playerScore;
             console.log("You Win! " + "round " + (i + 1) + " of 5.");
         }
     }
     // When for loops over, declare winner with highest score tally
     if (playerScore == computerScore) {
         console.log("IMPOSSIBLE! DRAW!!!!");
-    } else if (playerScore < computerScore) {
+    } else if (playerScore > computerScore) {
         console.log("You won! Congratulations!");
     } else {
         console.log("Too bad! Computer Wins!");
