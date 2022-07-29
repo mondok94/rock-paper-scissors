@@ -1,4 +1,4 @@
-// Function to output rock, paper or scissors at random
+// Random computer selection
 function computerPlay() {
     let randomNumber = Math.floor(Math.random() * 100) + 1;
     let computerSelection;
@@ -12,15 +12,12 @@ function computerPlay() {
     return computerSelection;
 }
 
-// Function to get user input
-function getPlayerInput() {
-    let playerInput = prompt("Choose paper, scissors or rock");
-    // Convert input to lowercase
-    let playerSelection = playerInput.toLowerCase();
-    return playerSelection;
-}
+// Buttons
+const ROCKBTN = document.querySelector('#rock');
+const PAPERBTN = document.querySelector('#paper');
+const SCISSORSBTN = document.querySelector('#scissors');
+console.log(ROCKBTN, PAPERBTN, SCISSORSBTN);
 
-// Function that compares playerSelection to computerSelection and return a value for draw/win/lose
 function playRound(playerSelection, computerSelection) {
     let result;
     if (playerSelection == computerSelection) {
@@ -34,36 +31,43 @@ function playRound(playerSelection, computerSelection) {
     } else {
         result = 3; // Player Wins
     }
+    console.log(result);
     return result;
 }
 
-// Function that simulates a 5 round game
+// Event Listener for each selection, returns result of playRound()
+ROCKBTN.addEventListener('click', (e) => {
+    playRound(e.target.id.toLowerCase(), computerPlay());
+});
+PAPERBTN.addEventListener('click', (e) => {
+    playRound(e.target.id.toLowerCase(), computerPlay());
+});
+SCISSORSBTN.addEventListener('click', (e) => {
+    playRound(e.target.id.toLowerCase(), computerPlay());
+});
+
+// Track winner
+
+
+/* 
 function game() {
     // Score variables
     let playerScore = 0;
     let computerScore = 0;
-    // 5 rounds of play
-    for (let i = 0; i < 5; i++) {
-        // for each round, player inputs selection
-        let playerSelection = getPlayerInput();
-        // get computer selection
-        let computerSelection = computerPlay();
-        // Error checking, print variables
-        console.log("Player: " + playerSelection + ", " + "Computer: " + computerSelection);
-        // Compete
-        let roundWinner = playRound(playerSelection, computerSelection);
 
-        // Result of each iteration increments score
-        if (roundWinner == 1) {
-            console.log("Draw! " + "round " + (i + 1) + " of 5.");
-        } else if (roundWinner == 2) {
-            ++computerScore;
-            console.log("Computer Wins! " + "round " + (i + 1) + " of 5.");
-        } else if (roundWinner == 3) {
-            ++playerScore;
-            console.log("You Win! " + "round " + (i + 1) + " of 5.");
-        }
+
+
+    // Result of each iteration increments score
+    if (roundWinner == 1) {
+        console.log("Draw! " + "round " + (i + 1) + " of 5.");
+    } else if (roundWinner == 2) {
+        ++computerScore;
+        console.log("Computer Wins! " + "round " + (i + 1) + " of 5.");
+    } else if (roundWinner == 3) {
+        ++playerScore;
+        console.log("You Win! " + "round " + (i + 1) + " of 5.");
     }
+
     // When for loops over, declare winner with highest score tally
     if (playerScore == computerScore) {
         console.log("IMPOSSIBLE! DRAW!!!!");
@@ -74,4 +78,4 @@ function game() {
     }
 }
 
-game();
+game(); */
