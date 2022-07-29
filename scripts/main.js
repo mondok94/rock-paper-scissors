@@ -31,26 +31,46 @@ function playRound(playerSelection, computerSelection) {
     } else {
         result = 3; // Player Wins
     }
-    console.log(result);
+    //console.log(result);
     return result;
 }
 
 // Event Listener for each selection, returns result of playRound()
 ROCKBTN.addEventListener('click', (e) => {
-    playRound(e.target.id.toLowerCase(), computerPlay());
+    roundWinner = playRound(e.target.id.toLowerCase(), computerPlay());
+    console.log(roundWinner);
+    game();
 });
 PAPERBTN.addEventListener('click', (e) => {
-    playRound(e.target.id.toLowerCase(), computerPlay());
+    roundWinner = playRound(e.target.id.toLowerCase(), computerPlay());
+    console.log(roundWinner); 
+    game();
 });
 SCISSORSBTN.addEventListener('click', (e) => {
-    playRound(e.target.id.toLowerCase(), computerPlay());
+    roundWinner = playRound(e.target.id.toLowerCase(), computerPlay());
+    console.log(roundWinner); 
+    game();
 });
 
+
 // Track winner
-
-
-/* 
 function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    if (roundWinner == 1) {
+        console.log("Draw!");
+    } else if (roundWinner == 2) {
+        ++computerScore;
+        console.log("Computer Wins!");
+    } else if (roundWinner == 3) {
+        ++playerScore;
+        console.log("You Win!");
+    }
+    console.log(playerScore, computerScore);
+}
+
+/* function game() {
     // Score variables
     let playerScore = 0;
     let computerScore = 0;
